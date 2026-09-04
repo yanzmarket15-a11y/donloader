@@ -1,0 +1,3124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7C1FD6">
+<meta name="description" content="DONLOADER - All Platform Media Downloader">
+<title>DONLOADER — All Platform Downloader</title>
+
+<style>
+/* =========================================================
+   DONLOADER
+   NEO-BRUTALIST + Y2K
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+  --purple:#7c1fd6;
+  --purple-dark:#55129b;
+  --purple-light:#b86cff;
+  --pink:#ff3b9d;
+  --yellow:#ffe500;
+  --green:#19d66b;
+  --red:#ff4545;
+  --blue:#4f7cff;
+
+  --black:#111111;
+  --white:#ffffff;
+  --cream:#f5f1e8;
+  --paper:#fffefa;
+  --gray:#777;
+  --line:#ded9d0;
+
+  --shadow:8px 8px 0 var(--black);
+  --shadow-purple:9px 9px 0 var(--purple);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  color:var(--black);
+  font-family:"Space Grotesk",Arial,sans-serif;
+
+  background-color:var(--cream);
+
+  background-image:
+    linear-gradient(#00000013 1px,transparent 1px),
+    linear-gradient(90deg,#00000013 1px,transparent 1px);
+
+  background-size:28px 28px;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a{
+  color:inherit;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+  width:min(1080px,100%);
+  margin:auto;
+  padding:28px 18px 70px;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.brand-mini{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:"Archivo Black",sans-serif;
+  font-size:14px;
+  letter-spacing:-.5px;
+}
+
+.brand-mini-mark{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--purple);
+  color:white;
+
+  border:3px solid var(--black);
+  box-shadow:4px 4px 0 var(--black);
+}
+
+.brand-mini-mark svg{
+  width:20px;
+  height:20px;
+}
+
+.status-chip{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  background:var(--white);
+  border:3px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+
+  padding:7px 10px;
+
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.status-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--green);
+  border:2px solid var(--black);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.logo{
+  width:72px;
+  height:72px;
+
+  margin:0 auto 24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--purple);
+
+  border:5px solid var(--black);
+  box-shadow:8px 8px 0 var(--black);
+
+  transform:rotate(-2deg);
+}
+
+.logo svg{
+  width:38px;
+  height:38px;
+}
+
+.hero-title{
+  font-family:"Archivo Black",sans-serif;
+  font-size:clamp(45px,9vw,86px);
+  line-height:.86;
+  letter-spacing:-4px;
+
+  text-transform:uppercase;
+
+  text-shadow:
+    7px 7px 0 var(--purple),
+    11px 11px 0 var(--black);
+}
+
+.hero-subtitle{
+  display:inline-block;
+
+  margin-top:25px;
+
+  background:var(--black);
+  color:white;
+
+  padding:10px 15px;
+
+  border:3px solid var(--black);
+  box-shadow:5px 5px 0 var(--purple);
+
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+}
+
+.platform-row{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+
+  margin-top:25px;
+}
+
+.platform{
+  padding:7px 10px;
+
+  background:var(--white);
+
+  border:3px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.platform:nth-child(2){
+  background:var(--yellow);
+}
+
+.platform:nth-child(3){
+  background:#ffd0eb;
+}
+
+.platform:nth-child(4){
+  background:#d7c0ff;
+}
+
+.platform:nth-child(5){
+  background:#cce7ff;
+}
+
+.platform:nth-child(6){
+  background:#d0ffd9;
+}
+
+/* =========================================================
+   SEARCH PANEL
+========================================================= */
+
+.search-panel{
+  background:var(--white);
+
+  border:5px solid var(--black);
+  box-shadow:var(--shadow-purple);
+
+  padding:28px;
+
+  margin-bottom:35px;
+}
+
+.panel-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:15px;
+
+  margin-bottom:15px;
+}
+
+.panel-title{
+  font-family:"Archivo Black",sans-serif;
+  font-size:18px;
+  text-transform:uppercase;
+}
+
+.panel-note{
+  font-size:9px;
+  font-weight:800;
+  color:var(--gray);
+  text-transform:uppercase;
+}
+
+.search-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:13px;
+}
+
+.url-wrap{
+  position:relative;
+}
+
+.url-input{
+  width:100%;
+  height:62px;
+
+  padding:0 95px 0 17px;
+
+  background:var(--cream);
+  color:var(--black);
+
+  border:4px solid var(--black);
+  box-shadow:5px 5px 0 var(--black);
+
+  outline:none;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:14px;
+  font-weight:700;
+}
+
+.url-input:focus{
+  background:white;
+  border-color:var(--purple);
+  box-shadow:5px 5px 0 var(--purple);
+}
+
+.url-input::placeholder{
+  color:#8c8a86;
+}
+
+.paste-btn{
+  position:absolute;
+  top:8px;
+  right:8px;
+
+  height:44px;
+
+  padding:0 12px;
+
+  background:var(--yellow);
+  color:var(--black);
+
+  border:3px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+
+  cursor:pointer;
+
+  font-size:9px;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.paste-btn:active{
+  transform:translate(3px,3px);
+  box-shadow:0 0 0 var(--black);
+}
+
+.main-btn{
+  min-width:170px;
+  height:62px;
+
+  padding:0 25px;
+
+  background:var(--purple);
+  color:white;
+
+  border:4px solid var(--black);
+  box-shadow:6px 6px 0 var(--black);
+
+  cursor:pointer;
+
+  font-family:"Archivo Black",sans-serif;
+  font-size:12px;
+  text-transform:uppercase;
+
+  transition:.08s;
+}
+
+.main-btn:hover{
+  transform:translate(2px,2px);
+  box-shadow:4px 4px 0 var(--black);
+}
+
+.main-btn:active{
+  transform:translate(6px,6px);
+  box-shadow:0 0 0 var(--black);
+}
+
+.main-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.status{
+  min-height:18px;
+  margin-top:17px;
+
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message{
+  display:none;
+
+  padding:15px;
+
+  margin-top:14px;
+
+  border:4px solid var(--black);
+  box-shadow:5px 5px 0 var(--black);
+
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.error{
+  background:#ffdcdc;
+  color:#970000;
+  border-color:#970000;
+  box-shadow:5px 5px 0 #970000;
+}
+
+.message.success{
+  background:#d9ffe7;
+  color:#075c2a;
+  border-color:#075c2a;
+  box-shadow:5px 5px 0 #075c2a;
+}
+
+/* =========================================================
+   DROP ZONE
+========================================================= */
+
+.dropzone{
+  margin-top:20px;
+
+  border:3px dashed #999;
+
+  padding:13px;
+
+  text-align:center;
+
+  color:#777;
+
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+
+  transition:.15s;
+}
+
+.dropzone.drag{
+  background:#eee1ff;
+  border-color:var(--purple);
+  color:var(--purple);
+}
+
+/* =========================================================
+   RESULTS HEADER
+========================================================= */
+
+.results{
+  display:none;
+}
+
+.results.show{
+  display:block;
+}
+
+.results-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+
+  margin-bottom:20px;
+}
+
+.results-title{
+  display:inline-block;
+
+  background:var(--black);
+  color:white;
+
+  border:3px solid var(--black);
+  box-shadow:5px 5px 0 var(--purple);
+
+  padding:9px 13px;
+
+  font-family:"Archivo Black",sans-serif;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.clear-btn{
+  background:var(--white);
+
+  border:3px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+
+  padding:8px 10px;
+
+  cursor:pointer;
+
+  font-size:9px;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   MEDIA CARD
+========================================================= */
+
+.media-card{
+  overflow:hidden;
+
+  background:var(--white);
+
+  border:5px solid var(--black);
+  box-shadow:10px 10px 0 var(--purple);
+
+  margin-bottom:35px;
+
+  animation:cardIn .35s ease both;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.media-main{
+  display:grid;
+  grid-template-columns:290px 1fr;
+  gap:28px;
+
+  padding:25px;
+}
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.preview-box{
+  position:relative;
+
+  width:100%;
+  aspect-ratio:9/16;
+
+  max-height:430px;
+
+  background:#111;
+
+  border:4px solid var(--black);
+  box-shadow:7px 7px 0 var(--black);
+
+  overflow:hidden;
+}
+
+.preview-box video,
+.preview-box img{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.preview-box audio{
+  position:absolute;
+  bottom:15px;
+  left:10px;
+  width:calc(100% - 20px);
+}
+
+.preview-empty{
+  height:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:25px;
+
+  color:white;
+
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.preview-label{
+  position:absolute;
+  top:10px;
+  left:10px;
+
+  background:var(--yellow);
+
+  border:3px solid var(--black);
+
+  box-shadow:3px 3px 0 var(--black);
+
+  padding:6px 8px;
+
+  font-size:8px;
+  font-weight:1000;
+  text-transform:uppercase;
+
+  z-index:2;
+}
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.info{
+  min-width:0;
+}
+
+.platform-tag{
+  display:inline-block;
+
+  background:var(--purple);
+  color:white;
+
+  border:3px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+
+  padding:7px 9px;
+
+  margin-bottom:17px;
+
+  font-size:9px;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.account{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  margin-bottom:18px;
+}
+
+.avatar{
+  flex:none;
+
+  width:52px;
+  height:52px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  background:var(--cream);
+
+  border:4px solid var(--black);
+  box-shadow:4px 4px 0 var(--purple);
+
+  font-family:"Archivo Black",sans-serif;
+  font-size:19px;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.username{
+  font-family:"Archivo Black",sans-serif;
+  font-size:18px;
+  line-height:1.05;
+
+  word-break:break-word;
+}
+
+.display-name{
+  margin-top:5px;
+
+  color:#777;
+
+  font-size:11px;
+  font-weight:800;
+}
+
+.caption-box{
+  position:relative;
+
+  margin:16px 0;
+
+  padding:15px 15px 15px 18px;
+
+  background:#faf8f2;
+
+  border:3px solid var(--black);
+
+  font-size:13px;
+  line-height:1.55;
+  font-weight:700;
+
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+
+.caption-box:before{
+  content:"CAPTION";
+
+  position:absolute;
+
+  top:-11px;
+  left:10px;
+
+  padding:3px 6px;
+
+  background:var(--pink);
+
+  border:2px solid var(--black);
+
+  font-size:7px;
+  font-weight:1000;
+}
+
+.hashtags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+
+  margin-top:14px;
+}
+
+.hashtag{
+  background:#e8d7ff;
+
+  border:2px solid var(--black);
+
+  padding:5px 7px;
+
+  font-size:9px;
+  font-weight:900;
+
+  box-shadow:2px 2px 0 var(--black);
+}
+
+.stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+
+  margin-top:20px;
+}
+
+.stat{
+  background:var(--cream);
+
+  border:3px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+
+  padding:7px 9px;
+
+  font-size:8px;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   DOWNLOAD SECTION
+========================================================= */
+
+.download-section{
+  padding:24px 25px 28px;
+
+  background:#f9f7f1;
+
+  border-top:5px solid var(--black);
+}
+
+.download-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:16px;
+}
+
+.download-title{
+  font-family:"Archivo Black",sans-serif;
+  font-size:13px;
+  text-transform:uppercase;
+}
+
+.file-count{
+  background:var(--yellow);
+
+  border:3px solid var(--black);
+
+  padding:5px 7px;
+
+  font-size:8px;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.download-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+}
+
+/* =========================================================
+   DOWNLOAD ITEM
+========================================================= */
+
+.download-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:14px;
+
+  background:var(--black);
+  color:white;
+
+  border:4px solid var(--black);
+  box-shadow:5px 5px 0 var(--purple);
+
+  transition:.08s;
+}
+
+.download-item:hover{
+  transform:translate(2px,2px);
+  box-shadow:3px 3px 0 var(--purple);
+}
+
+.file-info{
+  min-width:0;
+}
+
+.file-name{
+  font-family:"Archivo Black",sans-serif;
+  font-size:11px;
+  text-transform:uppercase;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.file-meta{
+  margin-top:5px;
+
+  color:#aaa;
+
+  font-size:8px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.download-direct{
+  flex:none;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+
+  min-height:40px;
+
+  padding:8px 10px;
+
+  background:var(--purple);
+  color:white;
+
+  border:3px solid white;
+
+  text-decoration:none;
+
+  font-size:8px;
+  font-weight:1000;
+  text-transform:uppercase;
+
+  cursor:pointer;
+}
+
+.download-direct:hover{
+  background:var(--purple-light);
+  color:var(--black);
+}
+
+.download-direct:active{
+  transform:translate(2px,2px);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+  margin-top:40px;
+
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+
+  padding-top:20px;
+
+  border-top:4px solid var(--black);
+
+  font-size:9px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:#777;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.spinner{
+  width:15px;
+  height:15px;
+
+  display:inline-block;
+  vertical-align:-3px;
+
+  border:3px solid white;
+  border-top-color:transparent;
+
+  border-radius:50%;
+
+  animation:spin .6s linear infinite;
+
+  margin-right:8px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty{
+  text-align:center;
+
+  padding:30px 10px;
+
+  color:#777;
+
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+  .page{
+    padding:18px 11px 50px;
+  }
+
+  .topbar{
+    margin-bottom:28px;
+  }
+
+  .brand-mini{
+    font-size:12px;
+  }
+
+  .status-chip{
+    font-size:8px;
+  }
+
+  .hero{
+    margin-bottom:28px;
+  }
+
+  .logo{
+    width:60px;
+    height:60px;
+
+    border-width:4px;
+
+    box-shadow:6px 6px 0 var(--black);
+  }
+
+  .hero-title{
+    font-size:45px;
+    letter-spacing:-3px;
+
+    text-shadow:
+      5px 5px 0 var(--purple),
+      8px 8px 0 var(--black);
+  }
+
+  .hero-subtitle{
+    font-size:8px;
+    margin-top:19px;
+  }
+
+  .platform-row{
+    gap:6px;
+  }
+
+  .platform{
+    padding:6px 8px;
+    font-size:8px;
+  }
+
+  .search-panel{
+    padding:19px;
+
+    border-width:4px;
+
+    box-shadow:7px 7px 0 var(--purple);
+  }
+
+  .panel-head{
+    display:block;
+  }
+
+  .panel-title{
+    font-size:15px;
+  }
+
+  .panel-note{
+    margin-top:5px;
+  }
+
+  .search-row{
+    grid-template-columns:1fr;
+  }
+
+  .url-input{
+    height:57px;
+    font-size:12px;
+  }
+
+  .main-btn{
+    width:100%;
+    height:57px;
+  }
+
+  .media-card{
+    border-width:4px;
+    box-shadow:7px 7px 0 var(--purple);
+  }
+
+  .media-main{
+    grid-template-columns:1fr;
+    gap:23px;
+    padding:18px;
+  }
+
+  .preview-box{
+    width:min(210px,70vw);
+    margin:auto;
+    max-height:none;
+
+    box-shadow:6px 6px 0 var(--black);
+  }
+
+  .username{
+    font-size:16px;
+  }
+
+  .download-section{
+    padding:18px;
+  }
+
+  .download-list{
+    grid-template-columns:1fr;
+  }
+
+  .download-item{
+    padding:12px;
+  }
+
+  .download-direct{
+    min-height:38px;
+    padding:7px 9px;
+  }
+
+  .results-head{
+    align-items:flex-start;
+  }
+
+  .footer{
+    flex-direction:column;
+  }
+}
+
+@media(max-width:390px){
+
+  .hero-title{
+    font-size:38px;
+  }
+
+  .preview-box{
+    width:180px;
+  }
+
+  .download-item{
+    gap:8px;
+  }
+
+  .download-direct{
+    font-size:7px;
+    padding:7px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+
+    <div class="brand-mini">
+
+      <div class="brand-mini-mark">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5"
+            stroke="white"
+            stroke-width="2.5"
+          />
+          <path
+            d="M4 19h16v2H4z"
+            fill="white"
+          />
+        </svg>
+      </div>
+
+      DONLOADER
+
+    </div>
+
+    <div class="status-chip">
+      <span class="status-dot"></span>
+      API ONLINE
+    </div>
+
+  </div>
+
+
+  <!-- HERO -->
+  <header class="hero">
+
+    <div class="logo">
+
+      <svg viewBox="0 0 24 24" fill="none">
+
+        <path
+          d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5"
+          stroke="white"
+          stroke-width="2.5"
+          stroke-linecap="square"
+        />
+
+        <rect
+          x="4"
+          y="18"
+          width="16"
+          height="3"
+          fill="white"
+        />
+
+      </svg>
+
+    </div>
+
+    <h1 class="hero-title">
+      DONLOADER
+    </h1>
+
+    <div class="hero-subtitle">
+      ALL PLATFORM MEDIA DOWNLOADER
+    </div>
+
+
+    <div class="platform-row">
+
+      <div class="platform">YOUTUBE</div>
+      <div class="platform">TIKTOK</div>
+      <div class="platform">INSTAGRAM</div>
+      <div class="platform">FACEBOOK</div>
+      <div class="platform">X / TWITTER</div>
+      <div class="platform">MORE</div>
+
+    </div>
+
+  </header>
+
+
+  <!-- SEARCH -->
+  <section class="search-panel">
+
+    <div class="panel-head">
+
+      <div class="panel-title">
+        Download Media
+      </div>
+
+      <div class="panel-note">
+        Paste your URL
+      </div>
+
+    </div>
+
+
+    <div class="search-row">
+
+      <div class="url-wrap">
+
+        <input
+          id="urlInput"
+          class="url-input"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="https://... paste link media di sini"
+        >
+
+        <button
+          id="pasteBtn"
+          class="paste-btn"
+          type="button"
+        >
+          PASTE
+        </button>
+
+      </div>
+
+
+      <button
+        id="downloadBtn"
+        class="main-btn"
+        type="button"
+      >
+        DOWNLOAD ↓
+      </button>
+
+    </div>
+
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+
+    <div
+      id="errorBox"
+      class="message error"
+    ></div>
+
+
+    <div
+      id="successBox"
+      class="message success"
+    ></div>
+
+
+    <div
+      id="dropzone"
+      class="dropzone"
+    >
+      DROP URL DI SINI / TEKAN CTRL + V
+    </div>
+
+  </section>
+
+
+  <!-- RESULTS -->
+  <section
+    id="results"
+    class="results"
+  >
+
+    <div class="results-head">
+
+      <div class="results-title">
+        MEDIA FOUND
+      </div>
+
+      <button
+        id="clearBtn"
+        class="clear-btn"
+        type="button"
+      >
+        CLEAR
+      </button>
+
+    </div>
+
+
+    <div id="resultsContainer"></div>
+
+  </section>
+
+
+  <div
+    id="empty"
+    class="empty"
+  >
+    Tempel link media lalu tekan DOWNLOAD
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <span>
+      DONLOADER © 2026
+    </span>
+
+    <span>
+      FAST • SIMPLE • MULTI PLATFORM
+    </span>
+
+  </footer>
+
+</div>
+
+
+<script>
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const API_BASE =
+  "https://api.ikyyxd.my.id/download/all-in-one?url=";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const urlInput =
+  document.getElementById("urlInput");
+
+const pasteBtn =
+  document.getElementById("pasteBtn");
+
+const downloadBtn =
+  document.getElementById("downloadBtn");
+
+const clearBtn =
+  document.getElementById("clearBtn");
+
+const results =
+  document.getElementById("results");
+
+const resultsContainer =
+  document.getElementById("resultsContainer");
+
+const empty =
+  document.getElementById("empty");
+
+const statusEl =
+  document.getElementById("status");
+
+const errorBox =
+  document.getElementById("errorBox");
+
+const successBox =
+  document.getElementById("successBox");
+
+const dropzone =
+  document.getElementById("dropzone");
+
+
+/* =========================================================
+   BASIC HELPERS
+========================================================= */
+
+function first(...values){
+
+  for(const value of values){
+
+    if(
+      value !== undefined &&
+      value !== null &&
+      String(value).trim() !== ""
+    ){
+      return value;
+    }
+
+  }
+
+  return "";
+
+}
+
+
+function escapeHTML(value){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    value == null ? "" : String(value);
+
+  return div.innerHTML;
+
+}
+
+
+function validURL(value){
+
+  try{
+
+    const url =
+      new URL(value);
+
+    return (
+      url.protocol === "http:" ||
+      url.protocol === "https:"
+    );
+
+  }catch{
+
+    return false;
+
+  }
+
+}
+
+
+function cleanURL(value){
+
+  return String(
+    value || ""
+  ).trim();
+
+}
+
+
+/* =========================================================
+   UI
+========================================================= */
+
+function resetMessages(){
+
+  errorBox.classList.remove("show");
+  successBox.classList.remove("show");
+
+  errorBox.textContent = "";
+  successBox.textContent = "";
+
+}
+
+
+function showError(message){
+
+  errorBox.textContent =
+    "ERROR: " + message;
+
+  errorBox.classList.add("show");
+
+}
+
+
+function showSuccess(message){
+
+  successBox.textContent =
+    message;
+
+  successBox.classList.add("show");
+
+}
+
+
+function resetResults(){
+
+  resultsContainer.innerHTML = "";
+
+  results.classList.remove("show");
+
+  empty.style.display = "block";
+
+}
+
+
+function setLoading(state){
+
+  downloadBtn.disabled =
+    state;
+
+  if(state){
+
+    downloadBtn.innerHTML =
+      `<span class="spinner"></span>PROCESSING`;
+
+  }else{
+
+    downloadBtn.innerHTML =
+      "DOWNLOAD ↓";
+
+  }
+
+}
+
+
+/* =========================================================
+   PLATFORM
+========================================================= */
+
+function detectPlatform(sourceURL,result){
+
+  const text =
+    (
+      first(
+        result?.platform,
+        result?.source,
+        result?.site,
+        result?.service,
+        sourceURL
+      ) || ""
+    ).toLowerCase();
+
+
+  if(
+    text.includes("youtube") ||
+    text.includes("youtu.be")
+  ){
+    return "YouTube";
+  }
+
+
+  if(text.includes("tiktok"))
+    return "TikTok";
+
+
+  if(text.includes("instagram"))
+    return "Instagram";
+
+
+  if(
+    text.includes("facebook") ||
+    text.includes("fb.watch")
+  ){
+    return "Facebook";
+  }
+
+
+  if(
+    text.includes("twitter") ||
+    text.includes("x.com")
+  ){
+    return "X / Twitter";
+  }
+
+
+  return "Media";
+
+}
+
+
+/* =========================================================
+   API
+========================================================= */
+
+async function requestAPI(sourceURL){
+
+  const endpoint =
+    API_BASE +
+    encodeURIComponent(sourceURL);
+
+
+  statusEl.textContent =
+    "CONNECTING TO DOWNLOADER API...";
+
+
+  const response =
+    await fetch(
+      endpoint,
+      {
+        method:"GET",
+        headers:{
+          "Accept":"application/json"
+        },
+        cache:"no-store"
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      "HTTP " + response.status
+    );
+
+  }
+
+
+  statusEl.textContent =
+    "READING MEDIA DATA...";
+
+
+  return await response.json();
+
+}
+
+
+/* =========================================================
+   RESPONSE NORMALIZER
+========================================================= */
+
+function getResult(data){
+
+  if(!data)
+    return {};
+
+  /*
+    Support:
+    {
+      result:{...}
+    }
+
+    {
+      data:{
+        result:{...}
+      }
+    }
+
+    {
+      data:{...}
+    }
+  */
+
+  if(data.result)
+    return data.result;
+
+  if(data.data?.result)
+    return data.data.result;
+
+  if(data.data)
+    return data.data;
+
+  return data;
+
+}
+
+
+function getMedias(result){
+
+  if(Array.isArray(result?.medias))
+    return result.medias;
+
+  if(Array.isArray(result?.media))
+    return result.media;
+
+  if(Array.isArray(result?.downloads))
+    return result.downloads;
+
+  if(Array.isArray(result?.items))
+    return result.items;
+
+  if(Array.isArray(result))
+    return result;
+
+  return [];
+
+}
+
+
+/* =========================================================
+   DATA EXTRACTORS
+========================================================= */
+
+function getUsername(result){
+
+  return first(
+
+    result?.unique_id,
+    result?.uniqueId,
+    result?.username,
+    result?.user_name,
+
+    result?.author?.unique_id,
+    result?.author?.uniqueId,
+    result?.author?.username,
+    result?.author?.user_name,
+
+    result?.user?.unique_id,
+    result?.user?.uniqueId,
+    result?.user?.username
+
+  );
+
+}
+
+
+function getDisplayName(result){
+
+  return first(
+
+    result?.nickname,
+    result?.display_name,
+    result?.displayName,
+    result?.name,
+    result?.author_name,
+
+    result?.author?.nickname,
+    result?.author?.name,
+    result?.author?.display_name,
+
+    result?.user?.nickname,
+    result?.user?.name
+
+  );
+
+}
+
+
+function getAvatar(result){
+
+  return first(
+
+    result?.avatar,
+    result?.avatar_url,
+    result?.avatarUrl,
+    result?.profile_pic,
+
+    result?.author?.avatar,
+    result?.author?.avatar_url,
+    result?.author?.avatarUrl,
+
+    result?.user?.avatar,
+    result?.user?.avatar_url
+
+  );
+
+}
+
+
+function getThumbnail(result){
+
+  return first(
+
+    result?.thumbnail,
+    result?.thumbnail_url,
+    result?.thumbnailUrl,
+
+    result?.cover,
+    result?.cover_url,
+    result?.coverUrl,
+
+    result?.poster,
+    result?.image
+
+  );
+
+}
+
+
+function getCaption(result){
+
+  return first(
+
+    result?.title,
+    result?.caption,
+    result?.desc,
+    result?.description,
+    result?.text
+
+  );
+
+}
+
+
+function getDuration(result){
+
+  return first(
+
+    result?.duration,
+    result?.duration_text,
+    result?.durationText
+
+  );
+
+}
+
+
+/* =========================================================
+   HASHTAGS
+========================================================= */
+
+function extractHashtags(text){
+
+  if(!text)
+    return [];
+
+  const found =
+    String(text).match(
+      /#[\p{L}\p{N}_]+/gu
+    );
+
+
+  if(!found)
+    return [];
+
+
+  return [
+    ...new Set(found)
+  ];
+
+}
+
+
+/* =========================================================
+   MEDIA URL
+========================================================= */
+
+function getMediaURL(item){
+
+  return cleanURL(
+
+    first(
+
+      item?.url,
+      item?.download_url,
+      item?.downloadUrl,
+
+      item?.link,
+      item?.download,
+
+      item?.src,
+      item?.source,
+
+      item?.play,
+      item?.play_url,
+      item?.playUrl,
+
+      item?.video_url,
+      item?.videoUrl,
+
+      item?.audio_url,
+      item?.audioUrl
+
+    )
+
+  );
+
+}
+
+
+/* =========================================================
+   MEDIA TYPE
+========================================================= */
+
+function getMediaType(item){
+
+  const raw =
+    String(
+      first(
+        item?.type,
+        item?.mime,
+        item?.format,
+        item?.extension,
+        ""
+      )
+    ).toLowerCase();
+
+
+  if(
+    raw.includes("audio") ||
+    raw.includes("mp3") ||
+    raw.includes("m4a") ||
+    raw.includes("wav")
+  ){
+    return "audio";
+  }
+
+
+  if(
+    raw.includes("video") ||
+    raw.includes("mp4") ||
+    raw.includes("webm") ||
+    raw.includes("mov")
+  ){
+    return "video";
+  }
+
+
+  if(
+    raw.includes("image") ||
+    raw.includes("jpg") ||
+    raw.includes("jpeg") ||
+    raw.includes("png") ||
+    raw.includes("webp")
+  ){
+    return "image";
+  }
+
+
+  /*
+    Kalau URL berakhiran video,
+    tetap anggap sebagai video.
+  */
+
+  const url =
+    getMediaURL(item).toLowerCase();
+
+
+  if(
+    /\.(mp4|webm|mov)(\?|$)/i.test(url)
+  ){
+    return "video";
+  }
+
+
+  if(
+    /\.(mp3|m4a|wav|ogg)(\?|$)/i.test(url)
+  ){
+    return "audio";
+  }
+
+
+  if(
+    /\.(jpg|jpeg|png|webp|gif)(\?|$)/i.test(url)
+  ){
+    return "image";
+  }
+
+
+  return "file";
+
+}
+
+
+/* =========================================================
+   FILE LABEL
+========================================================= */
+
+function getFileName(item,index){
+
+  return first(
+
+    item?.quality,
+    item?.resolution,
+    item?.label,
+    item?.name,
+    item?.title,
+    item?.format,
+
+    getMediaType(item) === "audio"
+      ? "Audio"
+      : getMediaType(item) === "video"
+        ? "Video " + (index + 1)
+        : "File " + (index + 1)
+
+  );
+
+}
+
+
+function getFileMeta(item){
+
+  const values = [];
+
+
+  const resolution =
+    first(
+      item?.resolution,
+      item?.quality
+    );
+
+
+  const format =
+    first(
+      item?.extension,
+      item?.ext,
+      item?.format,
+      item?.mime
+    );
+
+
+  if(resolution)
+    values.push(resolution);
+
+
+  if(format)
+    values.push(format);
+
+
+  return values.join(" • ") ||
+    getMediaType(item);
+
+}
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+function createPreview(result,medias){
+
+  const box =
+    document.createElement("div");
+
+  box.className =
+    "preview-box";
+
+
+  const thumbnail =
+    getThumbnail(result);
+
+
+  const video =
+    medias.find(
+      item =>
+        getMediaType(item) === "video" &&
+        getMediaURL(item)
+    );
+
+
+  const audio =
+    medias.find(
+      item =>
+        getMediaType(item) === "audio" &&
+        getMediaURL(item)
+    );
+
+
+  if(video){
+
+    const videoEl =
+      document.createElement("video");
+
+
+    videoEl.controls = true;
+    videoEl.playsInline = true;
+    videoEl.preload = "metadata";
+
+
+    if(thumbnail)
+      videoEl.poster =
+        thumbnail;
+
+
+    videoEl.src =
+      getMediaURL(video);
+
+
+    box.appendChild(videoEl);
+
+
+  }else if(thumbnail){
+
+    const img =
+      document.createElement("img");
+
+
+    img.src =
+      thumbnail;
+
+
+    img.alt =
+      "Media preview";
+
+
+    img.loading =
+      "lazy";
+
+
+    box.appendChild(img);
+
+
+  }else if(audio){
+
+    const audioEl =
+      document.createElement("audio");
+
+
+    audioEl.controls =
+      true;
+
+
+    audioEl.src =
+      getMediaURL(audio);
+
+
+    box.appendChild(audioEl);
+
+
+    const text =
+      document.createElement("div");
+
+
+    text.className =
+      "preview-empty";
+
+
+    text.textContent =
+      "AUDIO PREVIEW";
+
+
+    box.appendChild(text);
+
+
+  }else{
+
+    const text =
+      document.createElement("div");
+
+
+    text.className =
+      "preview-empty";
+
+
+    text.textContent =
+      "PREVIEW TIDAK TERSEDIA";
+
+
+    box.appendChild(text);
+
+  }
+
+
+  const label =
+    document.createElement("div");
+
+
+  label.className =
+    "preview-label";
+
+
+  label.textContent =
+    "PREVIEW";
+
+
+  box.appendChild(label);
+
+
+  return box;
+
+}
+
+
+/* =========================================================
+   ACCOUNT
+========================================================= */
+
+function createAccount(result){
+
+  const account =
+    document.createElement("div");
+
+
+  account.className =
+    "account";
+
+
+  const avatar =
+    document.createElement("div");
+
+
+  avatar.className =
+    "avatar";
+
+
+  const avatarURL =
+    getAvatar(result);
+
+
+  const username =
+    getUsername(result);
+
+
+  if(avatarURL){
+
+    const img =
+      document.createElement("img");
+
+
+    img.src =
+      avatarURL;
+
+
+    img.alt =
+      "Avatar";
+
+
+    img.onerror =
+      () => {
+
+        img.remove();
+
+        avatar.textContent =
+          (username || "U")
+            .charAt(0)
+            .toUpperCase();
+
+      };
+
+
+    avatar.appendChild(img);
+
+  }else{
+
+    avatar.textContent =
+      (username || "U")
+        .charAt(0)
+        .toUpperCase();
+
+  }
+
+
+  const text =
+    document.createElement("div");
+
+
+  const user =
+    document.createElement("div");
+
+
+  user.className =
+    "username";
+
+
+  user.textContent =
+    username
+      ? "@" + username
+      : "Unknown account";
+
+
+  text.appendChild(user);
+
+
+  const display =
+    getDisplayName(result);
+
+
+  if(display){
+
+    const displayEl =
+      document.createElement("div");
+
+
+    displayEl.className =
+      "display-name";
+
+
+    displayEl.textContent =
+      display;
+
+
+    text.appendChild(displayEl);
+
+  }
+
+
+  account.appendChild(avatar);
+  account.appendChild(text);
+
+
+  return account;
+
+}
+
+
+/* =========================================================
+   HASHTAG ELEMENT
+========================================================= */
+
+function createHashtags(caption){
+
+  const tags =
+    extractHashtags(caption);
+
+
+  if(!tags.length)
+    return null;
+
+
+  const wrapper =
+    document.createElement("div");
+
+
+  wrapper.className =
+    "hashtags";
+
+
+  tags
+    .slice(0,25)
+    .forEach(tag => {
+
+      const span =
+        document.createElement("span");
+
+
+      span.className =
+        "hashtag";
+
+
+      span.textContent =
+        tag;
+
+
+      wrapper.appendChild(span);
+
+    });
+
+
+  return wrapper;
+
+}
+
+
+/* =========================================================
+   DOWNLOAD ITEM
+========================================================= */
+
+function createDownloadItem(item,index){
+
+  const url =
+    getMediaURL(item);
+
+
+  if(!url)
+    return null;
+
+
+  const type =
+    getMediaType(item);
+
+
+  const name =
+    getFileName(item,index);
+
+
+  const meta =
+    getFileMeta(item);
+
+
+  const wrapper =
+    document.createElement("div");
+
+
+  wrapper.className =
+    "download-item";
+
+
+  const info =
+    document.createElement("div");
+
+
+  info.className =
+    "file-info";
+
+
+  const nameEl =
+    document.createElement("div");
+
+
+  nameEl.className =
+    "file-name";
+
+
+  nameEl.textContent =
+    name;
+
+
+  const metaEl =
+    document.createElement("div");
+
+
+  metaEl.className =
+    "file-meta";
+
+
+  metaEl.textContent =
+    meta;
+
+
+  info.appendChild(nameEl);
+  info.appendChild(metaEl);
+
+
+  /*
+    Direct download button.
+
+    Untuk cross-origin URL, browser bisa membuka
+    URL di tab baru jika server tidak mengizinkan
+    forced download.
+  */
+
+  const button =
+    document.createElement("a");
+
+
+  button.className =
+    "download-direct";
+
+
+  button.href =
+    url;
+
+
+  button.target =
+    "_blank";
+
+
+  button.rel =
+    "noopener noreferrer";
+
+
+  button.textContent =
+    "DOWNLOAD ↓";
+
+
+  wrapper.appendChild(info);
+  wrapper.appendChild(button);
+
+
+  return wrapper;
+
+}
+
+
+/* =========================================================
+   BUILD CARD
+========================================================= */
+
+function buildCard(result,medias,sourceURL){
+
+  const card =
+    document.createElement("article");
+
+
+  card.className =
+    "media-card";
+
+
+  /* MAIN */
+
+  const main =
+    document.createElement("div");
+
+
+  main.className =
+    "media-main";
+
+
+  main.appendChild(
+    createPreview(result,medias)
+  );
+
+
+  const info =
+    document.createElement("div");
+
+
+  info.className =
+    "info";
+
+
+  /* PLATFORM */
+
+  const tag =
+    document.createElement("div");
+
+
+  tag.className =
+    "platform-tag";
+
+
+  tag.textContent =
+    detectPlatform(
+      sourceURL,
+      result
+    );
+
+
+  info.appendChild(tag);
+
+
+  /* ACCOUNT */
+
+  info.appendChild(
+    createAccount(result)
+  );
+
+
+  /* CAPTION */
+
+  const caption =
+    getCaption(result);
+
+
+  if(caption){
+
+    const captionBox =
+      document.createElement("div");
+
+
+    captionBox.className =
+      "caption-box";
+
+
+    captionBox.textContent =
+      caption;
+
+
+    info.appendChild(
+      captionBox
+    );
+
+
+    const hashtagBox =
+      createHashtags(caption);
+
+
+    if(hashtagBox)
+      info.appendChild(
+        hashtagBox
+      );
+
+  }
+
+
+  /* STATS */
+
+  const stats =
+    document.createElement("div");
+
+
+  stats.className =
+    "stats";
+
+
+  const duration =
+    getDuration(result);
+
+
+  if(duration){
+
+    const el =
+      document.createElement("span");
+
+
+    el.className =
+      "stat";
+
+
+    el.textContent =
+      String(duration) + " SEC";
+
+
+    stats.appendChild(el);
+
+  }
+
+
+  const validMedias =
+    medias.filter(
+      item => getMediaURL(item)
+    );
+
+
+  const count =
+    document.createElement("span");
+
+
+  count.className =
+    "stat";
+
+
+  count.textContent =
+    validMedias.length +
+    " FILE";
+
+
+  stats.appendChild(count);
+
+
+  if(stats.children.length)
+    info.appendChild(stats);
+
+
+  main.appendChild(info);
+
+
+  card.appendChild(main);
+
+
+  /* DOWNLOAD SECTION */
+
+  const section =
+    document.createElement("div");
+
+
+  section.className =
+    "download-section";
+
+
+  const head =
+    document.createElement("div");
+
+
+  head.className =
+    "download-head";
+
+
+  const title =
+    document.createElement("div");
+
+
+  title.className =
+    "download-title";
+
+
+  title.textContent =
+    "Download Options";
+
+
+  const countBadge =
+    document.createElement("div");
+
+
+  countBadge.className =
+    "file-count";
+
+
+  countBadge.textContent =
+    validMedias.length +
+    " AVAILABLE";
+
+
+  head.appendChild(title);
+  head.appendChild(countBadge);
+
+
+  section.appendChild(head);
+
+
+  const list =
+    document.createElement("div");
+
+
+  list.className =
+    "download-list";
+
+
+  validMedias.forEach(
+    (item,index) => {
+
+      const downloadItem =
+        createDownloadItem(
+          item,
+          index
+        );
+
+
+      if(downloadItem)
+        list.appendChild(
+          downloadItem
+        );
+
+    }
+  );
+
+
+  if(!list.children.length){
+
+    const unavailable =
+      document.createElement("div");
+
+
+    unavailable.className =
+      "file-meta";
+
+
+    unavailable.textContent =
+      "Link download tidak tersedia.";
+
+
+    list.appendChild(
+      unavailable
+    );
+
+  }
+
+
+  section.appendChild(list);
+
+  card.appendChild(section);
+
+
+  return card;
+
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+async function processURL(){
+
+  const sourceURL =
+    urlInput.value.trim();
+
+
+  resetMessages();
+
+
+  if(!sourceURL){
+
+    showError(
+      "URL tidak boleh kosong."
+    );
+
+    return;
+
+  }
+
+
+  if(!validURL(sourceURL)){
+
+    showError(
+      "URL tidak valid. Gunakan http:// atau https://"
+    );
+
+    return;
+
+  }
+
+
+  setLoading(true);
+
+
+  try{
+
+    const data =
+      await requestAPI(
+        sourceURL
+      );
+
+
+    const result =
+      getResult(data);
+
+
+    let medias =
+      getMedias(result);
+
+
+    /*
+      Support API yang langsung
+      mengembalikan satu media.
+    */
+
+    if(
+      !medias.length &&
+      getMediaURL(result)
+    ){
+
+      medias = [result];
+
+    }
+
+
+    /*
+      Support result.video / result.audio
+      apabila API menggunakan struktur terpisah.
+    */
+
+    if(!medias.length){
+
+      const extra = [];
+
+
+      if(result?.video){
+
+        if(Array.isArray(result.video))
+          extra.push(
+            ...result.video
+          );
+        else
+          extra.push(
+            result.video
+          );
+
+      }
+
+
+      if(result?.audio){
+
+        if(Array.isArray(result.audio))
+          extra.push(
+            ...result.audio
+          );
+        else
+          extra.push(
+            result.audio
+          );
+
+      }
+
+
+      medias = extra;
+
+    }
+
+
+    const valid =
+      medias.filter(
+        item => getMediaURL(item)
+      );
+
+
+    if(!valid.length){
+
+      throw new Error(
+        "API tidak mengembalikan link media yang bisa digunakan."
+      );
+
+    }
+
+
+    resultsContainer.innerHTML = "";
+
+
+    const card =
+      buildCard(
+        result,
+        medias,
+        sourceURL
+      );
+
+
+    resultsContainer.appendChild(
+      card
+    );
+
+
+    results.classList.add("show");
+
+    empty.style.display =
+      "none";
+
+
+    statusEl.textContent =
+      "MEDIA READY.";
+
+
+    showSuccess(
+      "Berhasil menemukan " +
+      valid.length +
+      " pilihan media."
+    );
+
+
+    results.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+
+  }catch(error){
+
+    console.error(
+      "DONLOADER ERROR:",
+      error
+    );
+
+
+    statusEl.textContent =
+      "DOWNLOAD FAILED.";
+
+
+    showError(
+      error.message ||
+      "Gagal mengambil media dari API."
+    );
+
+  }finally{
+
+    setLoading(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   PASTE
+========================================================= */
+
+pasteBtn.addEventListener(
+  "click",
+  async () => {
+
+    try{
+
+      const text =
+        await navigator.clipboard.readText();
+
+
+      if(text){
+
+        urlInput.value =
+          text.trim();
+
+        urlInput.focus();
+
+      }
+
+    }catch{
+
+      urlInput.focus();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+downloadBtn.addEventListener(
+  "click",
+  processURL
+);
+
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+urlInput.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Enter"){
+
+      event.preventDefault();
+
+      processURL();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   CLEAR
+========================================================= */
+
+clearBtn.addEventListener(
+  "click",
+  () => {
+
+    resetMessages();
+
+    resetResults();
+
+    statusEl.textContent = "";
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+/* =========================================================
+   DRAG & DROP
+========================================================= */
+
+[
+  "dragenter",
+  "dragover"
+].forEach(eventName => {
+
+  dropzone.addEventListener(
+    eventName,
+    event => {
+
+      event.preventDefault();
+
+      dropzone.classList.add(
+        "drag"
+      );
+
+    }
+  );
+
+});
+
+
+[
+  "dragleave",
+  "drop"
+].forEach(eventName => {
+
+  dropzone.addEventListener(
+    eventName,
+    event => {
+
+      event.preventDefault();
+
+      dropzone.classList.remove(
+        "drag"
+      );
+
+    }
+  );
+
+});
+
+
+dropzone.addEventListener(
+  "drop",
+  event => {
+
+    const text =
+      event.dataTransfer
+        ?.getData("text")
+        ?.trim();
+
+
+    if(text){
+
+      urlInput.value =
+        text;
+
+      processURL();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   GLOBAL PASTE
+========================================================= */
+
+document.addEventListener(
+  "paste",
+  event => {
+
+    /*
+      Jangan ganggu input normal.
+    */
+
+    if(
+      document.activeElement ===
+      urlInput
+    ){
+      return;
+    }
+
+
+    const text =
+      event.clipboardData
+        ?.getData("text")
+        ?.trim();
+
+
+    if(
+      text &&
+      validURL(text)
+    ){
+
+      urlInput.value =
+        text;
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
